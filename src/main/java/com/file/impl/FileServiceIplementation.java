@@ -1,5 +1,6 @@
 package com.file.impl;
 
+import io.github.pixee.security.Filenames;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,7 +21,7 @@ public class FileServiceIplementation implements FileService {
 	@Override
 	public String uploadImage(String path, MultipartFile multipartFile) {
 		// TODO Auto-generated method stub
-		String name = multipartFile.getOriginalFilename();
+		String name = Filenames.toSimpleFileName(multipartFile.getOriginalFilename());
 		String randomID = UUID.randomUUID().toString();
 		String newFileName = randomID.concat(name.substring(name.lastIndexOf(".")));
 
